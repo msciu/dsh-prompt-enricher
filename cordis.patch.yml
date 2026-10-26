@@ -1,0 +1,7 @@
+# dsh-prompt-enricher bundle patch: the row loads this package's main entry as the
+# host half (a plain Cordis plugin that owns the elicitation routes); the
+# package's `dsh.client` declaration makes the web app load ./client as the
+# browser half (the prompt panel seats).
+- insert:
+    - id: prompt-enricher
+      name: dsh-prompt-enricher

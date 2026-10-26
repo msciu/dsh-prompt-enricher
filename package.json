@@ -1,0 +1,76 @@
+{
+  "name": "dsh-prompt-enricher",
+  "version": "0.2.0",
+  "type": "module",
+  "description": "Prompt workbench for DeepSeek Harness: a draft/history panel above the composer plus a grill-based prompt elicitation flow, so long prompts are never sent by accident and any earlier prompt stays findable.",
+  "license": "MIT",
+  "author": "msciu",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/msciu/dsh-prompt-enricher.git"
+  },
+  "homepage": "https://github.com/msciu/dsh-prompt-enricher#readme",
+  "bugs": {
+    "url": "https://github.com/msciu/dsh-prompt-enricher/issues"
+  },
+  "keywords": [
+    "dsh",
+    "deepseek-harness",
+    "cordis",
+    "plugin",
+    "prompt",
+    "prompt-engineering"
+  ],
+  "main": "lib/index.js",
+  "exports": {
+    ".": {
+      "default": "./lib/index.js"
+    },
+    "./client": "./lib/client.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-locale",
+        "@deepseek-ai/dsh-client-ui-conversation"
+      ]
+    }
+  },
+  "scripts": {
+    "build": "tsdown",
+    "watch": "tsdown --watch",
+    "test": "tsx tools/sent-feed.test.ts && node tools/sent-route.test.mjs"
+  },
+  "engines": {
+    "dsh": ">=0.1.2-0.0"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "*",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    },
+    "react-dom": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "tsdown": "^0.22.2",
+    "tsx": "^4.22.4"
+  }
+}
